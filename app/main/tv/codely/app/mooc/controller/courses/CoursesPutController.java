@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public final class CoursesPutController {
     @PutMapping("/courses/{id}")
     public ResponseEntity create(@PathVariable String id, @RequestBody Request request) {
-        return new ResponseEntity(HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }
 

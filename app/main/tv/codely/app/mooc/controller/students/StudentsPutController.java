@@ -22,7 +22,6 @@ public final class StudentsPutController {
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-
 }
 
 final class Request {

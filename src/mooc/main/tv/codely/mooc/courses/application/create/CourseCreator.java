@@ -15,6 +15,6 @@ public final class CourseCreator {
     public void create(String id, String name, String duration) {
         Course course = new Course(id, name, duration);
 
-        this.repository.save(course);
+        repository.save(course);
     }
 }

@@ -3,9 +3,9 @@ package tv.codely.mooc.courses.domain;
 import java.util.Objects;
 
 public final class Course {
-    private final String id;
-    private final String name;
-    private final String duration;
+    private String id;
+    private String name;
+    private String duration;
 
     public Course(String id, String name, String duration) {
         this.id       = id;

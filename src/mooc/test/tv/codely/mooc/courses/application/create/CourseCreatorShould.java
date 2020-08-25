@@ -8,15 +8,11 @@ import static org.mockito.Mockito.*;
 
 final class CourseCreatorShould {
     @Test
-    void create_a_valid_course() {
+    void save_a_valid_course() {
         CourseRepository repository = mock(CourseRepository.class);
         CourseCreator    creator    = new CourseCreator(repository);
 
-        String id       = "some-id";
-        String name     = "name";
-        String duration = "duration";
-
-        Course course = new Course(id, name, duration);
+        Course course = new Course("some-id", "some-name", "some-duration");
 
         creator.create(course.id(), course.name(), course.duration());
 

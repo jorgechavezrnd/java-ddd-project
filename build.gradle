@@ -1,0 +1,117 @@
+// Common for all projects
+allprojects {
+  apply plugin: 'java'
+  apply plugin: 'io.spring.dependency-management'
+  apply plugin: 'org.springframework.boot'
+
+  sourceCompatibility = 1.8
+  targetCompatibility = 1.8
+
+  repositories {
+    mavenCentral()
+  }
+
+  dependencies {
+    // Prod
+    implementation 'org.apache.logging.log4j:log4j-core:2.12.1'
+    implementation 'com.vlkan.log4j2:log4j2-logstash-layout:0.19'
+
+    // Test
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.3.2'
+    testCompile "org.mockito:mockito-core:2.+"
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.2'
+  }
+
+  test {
+    useJUnitPlatform()
+
+    testLogging {
+      events "passed", "skipped", "failed"
+    }
+  }
+
+
+  task view_paths {
+    doLast { task ->
+      println "$task.project.name"
+      println "------------------"
+      println "Main: $sourceSets.main.java.srcDirTrees"
+      println "   Resources: $sourceSets.main.resources.srcDirTrees"
+      println "Tests: $sourceSets.test.java.srcDirTrees"
+      println "   Resources: $sourceSets.test.resources.srcDirTrees"
+    }
+  }
+}
+
+// All subprojects (located in src/*)
+subprojects {
+  group = "tv.codely.${rootProject.name}"
+
+  sourceSets {
+    main {
+      java { srcDirs = ['main'] }
+      resources { srcDirs = ['main/resources'] }
+    }
+
+    test {
+      java { srcDirs = ['test'] }
+      resources { srcDirs = ['test/resources'] }
+    }
+  }
+
+  dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+  }
+
+  bootJar {
+    enabled = false
+  }
+
+  jar {
+    enabled = true
+  }
+}
+
+// Main project (located in app/)
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.6.RELEASE")
+  }
+}
+
+sourceSets {
+  main {
+    java { srcDirs = ['app/main'] }
+    resources { srcDirs = ['app/main/resources'] }
+  }
+
+  test {
+    java { srcDirs = ['app/test'] }
+    resources { srcDirs = ['app/test/resources'] }
+  }
+}
+
+apply plugin: 'application'
+
+bootJar {
+  baseName = 'java-ddd-skeleton'
+  version = '0.0.1'
+}
+
+mainClassName = 'tv.codely.app.Starter'
+
+dependencies {
+  compile("org.springframework.boot:spring-boot-starter-web")
+
+//  implementation project(":shared")
+  implementation project(":backoffice")
+  implementation project(":mooc")
+
+  testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+

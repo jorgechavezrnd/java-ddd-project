@@ -6,14 +6,14 @@ import tv.codely.shared.domain.Service;
 
 @Service
 public final class CourseCreator {
-    private CourseRepository repository;
+    private final CourseRepository repository;
 
     public CourseCreator(CourseRepository repository) {
         this.repository = repository;
     }
 
-    public void create(String id, String name, String duration) {
-        Course course = new Course(id, name, duration);
+    public void create(CreateCourseRequest request) {
+        Course course = new Course(request.id(), request.name(), request.duration());
 
         repository.save(course);
     }

@@ -14,7 +14,7 @@ final class CourseCreatorShould {
 
         Course course = new Course("some-id", "some-name", "some-duration");
 
-        creator.create(course.id(), course.name(), course.duration());
+        creator.create(new CreateCourseRequest(course.id(), course.name(), course.duration()));
 
         verify(repository, atLeastOnce()).save(course);
     }

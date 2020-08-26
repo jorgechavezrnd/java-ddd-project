@@ -6,14 +6,14 @@ import tv.codely.shared.domain.Service;
 
 @Service
 public final class StudentCreator {
-    private StudentRepository repository;
+    private final StudentRepository repository;
 
     public StudentCreator(StudentRepository repository) {
         this.repository = repository;
     }
 
-    public void create(String id, String name, String email) {
-        Student student = new Student(id, name, email);
+    public void create(String id, String name, String surname, String email) {
+        Student student = new Student(id, name, surname, email);
 
         repository.save(student);
     }

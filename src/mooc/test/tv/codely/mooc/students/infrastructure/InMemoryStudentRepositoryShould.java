@@ -11,14 +11,14 @@ final class InMemoryStudentRepositoryShould {
     void save_a_student() {
         InMemoryStudentRepository repository = new InMemoryStudentRepository();
 
-        repository.save(new Student("some-id", "some-name", "some-email"));
+        repository.save(new Student("some-id", "some-name", "some-surname", "some-email"));
     }
 
     @Test
     void return_an_existing_student() {
         InMemoryStudentRepository repository = new InMemoryStudentRepository();
 
-        Student student = new Student("some-id", "some-name", "some-email");
+        Student student = new Student("some-id", "some-name", "some-surname", "some-email");
 
         repository.save(student);
 

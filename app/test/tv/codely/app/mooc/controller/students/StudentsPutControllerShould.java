@@ -9,7 +9,7 @@ public final class StudentsPutControllerShould extends RequestTestCase {
         assertRequestWithBody(
             "PUT",
             "/students/bdf3a366-ea3d-471a-93c4-9139cac48baa",
-            "{\"name\": \"Jorge\", \"email\": \"jorge@gmail.com\"}",
+            "{\"name\": \"Jorge\", \"surname\": \"Chavez\", \"email\": \"jorge@gmail.com\"}",
             201
         );
     }

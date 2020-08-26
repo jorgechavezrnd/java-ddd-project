@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Service
 public final class InMemoryStudentRepository implements StudentRepository {
-    private HashMap<String, Student> students = new HashMap<>();
+    private final HashMap<String, Student> students = new HashMap<>();
 
     @Override
     public void save(Student student) {

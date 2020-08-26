@@ -12,9 +12,9 @@ final class StudentCreatorShould {
         StudentRepository repository = mock(StudentRepository.class);
         StudentCreator    creator    = new StudentCreator(repository);
 
-        Student student = new Student("some-id", "some-name", "some-email");
+        Student student = new Student("some-id", "some-name", "some-surname", "some-email");
 
-        creator.create(student.id(), student.name(), student.email());
+        creator.create(student.id(), student.name(), student.surname(), student.email());
 
         verify(repository, atLeastOnce()).save(student);
     }

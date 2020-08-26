@@ -10,7 +10,7 @@ import tv.codely.mooc.students.application.create.StudentCreator;
 
 @RestController
 public final class StudentsPutController {
-    private StudentCreator creator;
+    private final StudentCreator creator;
 
     public StudentsPutController(StudentCreator creator) {
         this.creator = creator;
@@ -18,7 +18,7 @@ public final class StudentsPutController {
 
     @PutMapping("/students/{id}")
     public ResponseEntity<?> create(@PathVariable String id, @RequestBody Request request) {
-        creator.create(id, request.name(), request.email());
+        creator.create(id, request.name(), request.surname(), request.email());
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -26,10 +26,15 @@ public final class StudentsPutController {
 
 final class Request {
     private String name;
+    private String surname;
     private String email;
 
     public String name() {
         return name;
+    }
+
+    public String surname() {
+        return surname;
     }
 
     public String email() {
@@ -38,6 +43,10 @@ final class Request {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public void setEmail(String email) {

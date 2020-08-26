@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import tv.codely.mooc.students.application.create.CreateStudentRequest;
 import tv.codely.mooc.students.application.create.StudentCreator;
 
 @RestController
@@ -18,7 +19,9 @@ public final class StudentsPutController {
 
     @PutMapping("/students/{id}")
     public ResponseEntity<?> create(@PathVariable String id, @RequestBody Request request) {
-        creator.create(id, request.name(), request.surname(), request.email());
+        creator.create(
+            new CreateStudentRequest(id, request.name(), request.surname(), request.email())
+        );
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

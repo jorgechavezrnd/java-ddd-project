@@ -12,8 +12,13 @@ public final class StudentCreator {
         this.repository = repository;
     }
 
-    public void create(String id, String name, String surname, String email) {
-        Student student = new Student(id, name, surname, email);
+    public void create(CreateStudentRequest request) {
+        Student student = new Student(
+            request.id(),
+            request.name(),
+            request.surname(),
+            request.email()
+        );
 
         repository.save(student);
     }

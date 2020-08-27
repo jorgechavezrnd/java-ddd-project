@@ -1,4 +1,4 @@
-package tv.codely.shared.domain;
+package tv.codely.shared.domain.domain;
 
 import java.io.Serializable;
 import java.util.Objects;

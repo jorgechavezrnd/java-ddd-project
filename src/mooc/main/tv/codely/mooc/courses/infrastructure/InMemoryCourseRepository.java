@@ -3,14 +3,14 @@ package tv.codely.mooc.courses.infrastructure;
 import tv.codely.mooc.courses.domain.Course;
 import tv.codely.mooc.courses.domain.CourseId;
 import tv.codely.mooc.courses.domain.CourseRepository;
-import tv.codely.shared.domain.Service;
+import tv.codely.shared.domain.domain.Service;
 
 import java.util.HashMap;
 import java.util.Optional;
 
 @Service
 public final class InMemoryCourseRepository implements CourseRepository {
-    private HashMap<CourseId, Course> courses = new HashMap<>();
+    private final HashMap<CourseId, Course> courses = new HashMap<>();
 
     @Override
     public void save(Course course) {

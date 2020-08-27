@@ -7,21 +7,12 @@ import static org.mockito.Mockito.*;
 
 final class CourseCreatorShould {
     @Test
-    void save_a_valid_course() {
+    void create_a_valid_course() {
         CourseRepository repository = mock(CourseRepository.class);
         CourseCreator    creator    = new CourseCreator(repository);
 
-        CreateCourseRequest request = new CreateCourseRequest(
-            "1aab45ba-3c7a-4344-8936-78466eca77fa",
-            "name",
-            "duration"
-        );
-
-        Course course = new Course(
-            new CourseId(request.id()),
-            new CourseName(request.name()),
-            new CourseDuration(request.duration())
-        );
+        CreateCourseRequest request = CreateCourseRequestMother.random();
+        Course              course  = CourseMother.fromRequest(request);
 
         creator.create(request);
 

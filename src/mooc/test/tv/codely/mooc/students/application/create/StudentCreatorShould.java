@@ -17,7 +17,7 @@ final class StudentCreatorShould extends StudentsModuleUnitTestCase {
     }
 
     @Test
-    void save_a_valid_student() {
+    void create_a_valid_student() {
         CreateStudentRequest request = CreateStudentRequestMother.random();
 
         Student student = StudentMother.fromRequest(request);

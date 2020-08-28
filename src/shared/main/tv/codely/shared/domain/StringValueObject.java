@@ -1,4 +1,4 @@
-package tv.codely.shared.domain.domain;
+package tv.codely.shared.domain;
 
 import java.util.Objects;
 

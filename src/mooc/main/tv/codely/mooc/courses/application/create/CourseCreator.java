@@ -1,7 +1,7 @@
 package tv.codely.mooc.courses.application.create;
 
 import tv.codely.mooc.courses.domain.*;
-import tv.codely.shared.domain.domain.Service;
+import tv.codely.shared.domain.Service;
 
 @Service
 public final class CourseCreator {

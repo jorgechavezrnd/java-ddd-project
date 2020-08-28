@@ -1,4 +1,4 @@
-package tv.codely.shared.domain.domain;
+package tv.codely.shared.domain;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -18,7 +18,7 @@ public abstract class Identifier implements Serializable {
     }
 
     public String value() {
-        return value.toString();
+        return value;
     }
 
     private void ensureValidUuid(String value) throws IllegalArgumentException {

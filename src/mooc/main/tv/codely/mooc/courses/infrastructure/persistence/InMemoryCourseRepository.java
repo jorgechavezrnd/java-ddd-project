@@ -1,4 +1,4 @@
-package tv.codely.mooc.courses.infrastructure;
+package tv.codely.mooc.courses.infrastructure.persistence;
 
 import tv.codely.mooc.courses.domain.Course;
 import tv.codely.mooc.courses.domain.CourseId;

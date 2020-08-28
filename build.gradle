@@ -61,10 +61,17 @@ subprojects {
   }
 
   dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.1.16.RELEASE'
+    implementation 'org.hibernate:hibernate-core:5.4.10.Final'
+    implementation 'org.springframework:spring-orm:5.1.17.RELEASE'
+    implementation 'org.apache.tomcat:tomcat-dbcp:9.0.37'
+    implementation 'com.sun.xml.bind:jaxb-impl:2.1.17'
+    implementation 'javax.xml.bind:jaxb-api:2.3.1'
+
+    runtime 'mysql:mysql-connector-java:8.0.21'
 
     testImplementation rootProject.sourceSets.main.output
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.1.16.RELEASE'
 
     if (project.name != "shared") {
       implementation project(":shared")

@@ -58,7 +58,7 @@ For run test with mysql adapter:
 NOTE: use JDK 8 for avoid this warning:
 - 'an illegal reflective access operation has occurred...'
 
-For run mooc_backend:
+For run mooc_backend commands:
 - `./gradlew :run --args="mooc_backend api"`
 - `./gradlew :run --args="mooc_backend fake"`
 - `./gradlew :run --args="mooc_backend another_fake"`

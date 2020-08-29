@@ -77,7 +77,7 @@ public class MoocHibernateConfiguration {
         dataSource.setUrl(
             "jdbc:mysql://localhost:3306/mooc?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
         dataSource.setUsername("root");
-        dataSource.setPassword("");
+        dataSource.setPassword("123456");
 
         return dataSource;
     }

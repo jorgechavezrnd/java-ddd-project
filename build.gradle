@@ -16,6 +16,14 @@ allprojects {
     implementation 'org.apache.logging.log4j:log4j-core:2.12.1'
     implementation 'com.vlkan.log4j2:log4j2-logstash-layout:0.19'
 
+    implementation 'org.hibernate:hibernate-core:5.4.10.Final'
+    implementation 'org.springframework:spring-orm:5.1.17.RELEASE'
+    implementation 'org.apache.tomcat:tomcat-dbcp:9.0.37'
+    implementation 'com.sun.xml.bind:jaxb-impl:2.1.17'
+    implementation 'javax.xml.bind:jaxb-api:2.3.1'
+
+    runtime 'mysql:mysql-connector-java:8.0.21'
+
     // Test
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.2'
     testImplementation "org.mockito:mockito-core:2.+"
@@ -62,13 +70,6 @@ subprojects {
 
   dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web:2.1.16.RELEASE'
-    implementation 'org.hibernate:hibernate-core:5.4.10.Final'
-    implementation 'org.springframework:spring-orm:5.1.17.RELEASE'
-    implementation 'org.apache.tomcat:tomcat-dbcp:9.0.37'
-    implementation 'com.sun.xml.bind:jaxb-impl:2.1.17'
-    implementation 'javax.xml.bind:jaxb-api:2.3.1'
-
-    runtime 'mysql:mysql-connector-java:8.0.21'
 
     testImplementation rootProject.sourceSets.main.output
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.1.16.RELEASE'
@@ -88,25 +89,25 @@ subprojects {
   }
 }
 
-// Main project (located in app/)
+// Main project (located in apps/)
 buildscript {
   repositories {
     mavenCentral()
   }
   dependencies {
-    classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.6.RELEASE")
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.16.RELEASE")
   }
 }
 
 sourceSets {
   main {
-    java { srcDirs = ['app/main'] }
-    resources { srcDirs = ['app/main/resources'] }
+    java { srcDirs = ['apps/main'] }
+    resources { srcDirs = ['apps/main/resources'] }
   }
 
   test {
-    java { srcDirs = ['app/test'] }
-    resources { srcDirs = ['app/test/resources'] }
+    java { srcDirs = ['apps/test'] }
+    resources { srcDirs = ['apps/test/resources'] }
   }
 }
 
@@ -117,15 +118,16 @@ bootJar {
   version = '0.0.1'
 }
 
-mainClassName = 'tv.codely.app.Starter'
+mainClassName = 'tv.codely.apps.Starter'
 
 dependencies {
-  compile("org.springframework.boot:spring-boot-starter-web")
+  implementation('org.springframework.boot:spring-boot-starter-web:2.1.16.RELEASE')
 
   implementation project(":shared")
   implementation project(":backoffice")
   implementation project(":mooc")
 
-  testCompile("org.springframework.boot:spring-boot-starter-test")
+  testImplementation 'org.springframework.boot:spring-boot-starter-test:2.1.16.RELEASE'
+  testImplementation project(":shared").sourceSets.test.output
 }
 

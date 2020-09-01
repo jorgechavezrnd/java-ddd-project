@@ -9,9 +9,9 @@ import tv.codely.shared.domain.Service;
 import javax.transaction.Transactional;
 import java.util.Optional;
 
-//@Service
+@Service
 public class MySqlCourseRepository implements CourseRepository {
-    private SessionFactory sessionFactory;
+    private final SessionFactory sessionFactory;
 
     public MySqlCourseRepository(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;

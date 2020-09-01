@@ -8,7 +8,7 @@ import tv.codely.shared.domain.Service;
 import java.util.HashMap;
 import java.util.Optional;
 
-@Service
+//@Service
 public final class InMemoryCourseRepository implements CourseRepository {
     private final HashMap<CourseId, Course> courses = new HashMap<>();
 

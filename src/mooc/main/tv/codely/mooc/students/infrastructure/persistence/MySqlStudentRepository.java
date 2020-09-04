@@ -5,26 +5,23 @@ import tv.codely.mooc.students.domain.Student;
 import tv.codely.mooc.students.domain.StudentId;
 import tv.codely.mooc.students.domain.StudentRepository;
 import tv.codely.shared.domain.Service;
+import tv.codely.shared.infrastructure.hibernate.HibernateRepository;
 
-import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
-public class MySqlStudentRepository implements StudentRepository {
-    private final SessionFactory sessionFactory;
-
+public class MySqlStudentRepository extends HibernateRepository<Student> implements StudentRepository {
     public MySqlStudentRepository(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
+        super(sessionFactory, Student.class);
     }
 
     @Override
-    @Transactional
     public void save(Student student) {
-        sessionFactory.getCurrentSession().save(student);
+        persist(student);
     }
 
     @Override
     public Optional<Student> search(StudentId id) {
-        return Optional.ofNullable(sessionFactory.getCurrentSession().find(Student.class, id));
+        return byId(id);
     }
 }

@@ -8,8 +8,12 @@ import org.springframework.http.HttpMethod;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultMatcher;
+import tv.codely.shared.domain.bus.event.DomainEvent;
+import tv.codely.shared.domain.bus.event.EventBus;
 
 import javax.transaction.Transactional;
+
+import java.util.Arrays;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -24,6 +28,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public abstract class ApplicationTestCase {
     @Autowired
     private MockMvc mockMvc;
+    @Autowired
+    private EventBus eventBus;
 
     public void assertResponse(
         String endpoint,
@@ -50,5 +56,9 @@ public abstract class ApplicationTestCase {
             .perform(request(HttpMethod.valueOf(method), endpoint).content(body).contentType(APPLICATION_JSON))
             .andExpect(status().is(expectedStatusCode))
             .andExpect(content().string(""));
+    }
+
+    protected void givenISendEventsToTheBus(DomainEvent<?>... domainEvents) {
+        eventBus.publish(Arrays.asList(domainEvents));
     }
 }

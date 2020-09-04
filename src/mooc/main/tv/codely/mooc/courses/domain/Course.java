@@ -1,8 +1,10 @@
 package tv.codely.mooc.courses.domain;
 
+import tv.codely.shared.domain.AggregateRoot;
+
 import java.util.Objects;
 
-public final class Course {
+public final class Course extends AggregateRoot {
     private final CourseId       id;
     private final CourseName     name;
     private final CourseDuration duration;
@@ -11,6 +13,20 @@ public final class Course {
         this.id       = id;
         this.name     = name;
         this.duration = duration;
+    }
+
+    private Course() {
+        id       = null;
+        name     = null;
+        duration = null;
+    }
+
+    public static Course create(CourseId id, CourseName name, CourseDuration duration) {
+        Course course = new Course(id, name, duration);
+
+        course.record(new CourseCreatedDomainEvent(id.value(), name.value(), duration.value()));
+
+        return course;
     }
 
     public CourseId id() {

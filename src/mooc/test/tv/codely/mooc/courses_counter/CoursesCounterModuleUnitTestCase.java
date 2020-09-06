@@ -20,15 +20,15 @@ public abstract class CoursesCounterModuleUnitTestCase extends UnitTestCase {
         repository = mock(CoursesCounterRepository.class);
     }
 
-    public void shouldSearch(CoursesCounter course) {
-        Mockito.when(repository.search()).thenReturn(Optional.of(course));
+    public void shouldSearch(CoursesCounter counter) {
+        Mockito.when(repository.search()).thenReturn(Optional.of(counter));
     }
 
     public void shouldSearch() {
         Mockito.when(repository.search()).thenReturn(Optional.empty());
     }
 
-    public void shouldHaveSaved(CoursesCounter course) {
-        verify(repository, atLeastOnce()).save(course);
+    public void shouldHaveSaved(CoursesCounter counter) {
+        verify(repository, atLeastOnce()).save(counter);
     }
 }

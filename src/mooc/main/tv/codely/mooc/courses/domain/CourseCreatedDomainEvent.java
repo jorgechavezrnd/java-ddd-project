@@ -48,12 +48,12 @@ public final class CourseCreatedDomainEvent extends DomainEvent<CourseCreatedDom
         String aggregateId,
         HashMap<String, Serializable> body,
         String eventId,
-        String occuredOn
+        String occurredOn
     ) {
         return new CourseCreatedDomainEvent(
             aggregateId,
             eventId,
-            occuredOn,
+            occurredOn,
             (String) body.get("name"),
             (String) body.get("duration")
         );

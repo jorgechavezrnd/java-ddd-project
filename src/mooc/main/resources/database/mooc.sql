@@ -1,8 +1,8 @@
 CREATE TABLE `courses` (
-  `id` CHAR(36) NOT NULL,
-  `name` VARCHAR(255) NOT NULL,
-  `duration` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`id`)
+    `id` CHAR(36) NOT NULL,
+    `name` VARCHAR(255) NOT NULL,
+    `duration` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `courses_counter` (
@@ -31,4 +31,13 @@ CREATE TABLE `steps_videos` (
     `text` TEXT NOT NULL,
     PRIMARY KEY (`id`),
     CONSTRAINT `fk_steps_video__step_id` FOREIGN KEY (`id`) REFERENCES `steps` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `domain_events` (
+    `id` CHAR(36) NOT NULL,
+    `aggregate_id` CHAR(36) NOT NULL,
+    `name` VARCHAR(255) NOT NULL,
+    `body` JSON NOT NULL,
+    `occurred_on` TIMESTAMP NOT NULL,
+    PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

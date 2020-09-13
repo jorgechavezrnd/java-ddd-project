@@ -58,7 +58,7 @@ public abstract class ApplicationTestCase {
             .andExpect(content().string(""));
     }
 
-    protected void givenISendEventsToTheBus(DomainEvent<?>... domainEvents) {
+    protected void givenISendEventsToTheBus(DomainEvent... domainEvents) {
         eventBus.publish(Arrays.asList(domainEvents));
     }
 }

@@ -2,6 +2,8 @@ package tv.codely.shared.infrastructure.bus.event.mysql;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.query.NativeQuery;
+import org.springframework.context.annotation.Primary;
+import tv.codely.shared.domain.Service;
 import tv.codely.shared.domain.Utils;
 import tv.codely.shared.domain.bus.event.DomainEvent;
 import tv.codely.shared.domain.bus.event.EventBus;
@@ -10,6 +12,8 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 
+//@Primary
+@Service
 public final class MySqlEventBus implements EventBus {
     private final SessionFactory sessionFactory;
 
@@ -18,11 +22,11 @@ public final class MySqlEventBus implements EventBus {
     }
 
     @Override
-    public void publish(List<DomainEvent<?>> events) {
+    public void publish(List<DomainEvent> events) {
         events.forEach(this::publish);
     }
 
-    private void publish(DomainEvent<?> domainEvent) {
+    private void publish(DomainEvent domainEvent) {
         String                        id          = domainEvent.eventId();
         String                        aggregateId = domainEvent.aggregateId();
         String                        name        = domainEvent.eventName();

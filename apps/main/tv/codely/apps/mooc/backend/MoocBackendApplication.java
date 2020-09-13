@@ -21,7 +21,7 @@ public class MoocBackendApplication {
         return new HashMap<String, Class<?>>() {{
             put("fake", FakeCommand.class);
             put("another_fake", AnotherFakeCommand.class);
-            put("domain-events:mysq:consume", ConsumeMySqlDomainEventsCommand.class);
+            put("domain-events:mysql:consume", ConsumeMySqlDomainEventsCommand.class);
         }};
     }
 }

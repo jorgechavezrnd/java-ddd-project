@@ -2,6 +2,7 @@ package tv.codely.shared.domain;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.base.CaseFormat;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -33,5 +34,9 @@ public final class Utils {
         } catch (IOException e) {
             return null;
         }
+    }
+
+    public static String toSnake(String text) {
+        return CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, text);
     }
 }

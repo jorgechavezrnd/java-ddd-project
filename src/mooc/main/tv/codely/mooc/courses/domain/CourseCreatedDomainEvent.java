@@ -6,9 +6,16 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Objects;
 
-public final class CourseCreatedDomainEvent extends DomainEvent {
+public final class CourseCreatedDomainEvent extends DomainEvent<CourseCreatedDomainEvent> {
     private final String name;
     private final String duration;
+
+    public CourseCreatedDomainEvent() {
+        super(null);
+
+        this.name     = null;
+        this.duration = null;
+    }
 
     public CourseCreatedDomainEvent(String aggregateId, String name, String duration) {
         super(aggregateId);
@@ -28,13 +35,6 @@ public final class CourseCreatedDomainEvent extends DomainEvent {
 
         this.name     = name;
         this.duration = duration;
-    }
-
-    public CourseCreatedDomainEvent() {
-        super(null);
-
-        this.name     = null;
-        this.duration = null;
     }
 
     @Override

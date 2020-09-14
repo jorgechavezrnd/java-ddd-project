@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.UUID;
 
-public abstract class DomainEvent {
+public abstract class DomainEvent<T extends DomainEvent<?>> {
     private String aggregateId;
     private String eventId;
     private String occurredOn;
@@ -29,7 +29,7 @@ public abstract class DomainEvent {
 
     public abstract String eventName();
     public abstract HashMap<String, Serializable> toPrimitives();
-    public abstract DomainEvent fromPrimitives(
+    public abstract T fromPrimitives(
         String aggregateId,
         HashMap<String, Serializable> body,
         String eventId,

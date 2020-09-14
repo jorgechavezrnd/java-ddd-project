@@ -22,6 +22,7 @@ allprojects {
     implementation 'com.sun.xml.bind:jaxb-impl:2.1.17'
     implementation 'javax.xml.bind:jaxb-api:2.3.1'
     implementation 'org.reflections:reflections:0.9.12'
+    implementation 'org.springframework.boot:spring-boot-starter-amqp'
 
     runtime 'mysql:mysql-connector-java:8.0.21'
 

@@ -62,3 +62,8 @@ For run mooc_backend commands:
 - `./gradlew :run --args="mooc_backend api"`
 - `./gradlew :run --args="mooc_backend fake"`
 - `./gradlew :run --args="mooc_backend another_fake"`
+
+For run rabbitmq container:
+- `docker run -d -p 15672:15672 -p 5672:5672 --name rabbitmq_server rabbitmq:3-management`
+- Go to [localhost:15672](http://localhost:15672)
+- Default login is `guest` `guest`

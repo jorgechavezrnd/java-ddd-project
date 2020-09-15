@@ -6,6 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
 import tv.codely.apps.mooc.backend.command.AnotherFakeCommand;
 import tv.codely.apps.mooc.backend.command.ConsumeMySqlDomainEventsCommand;
+import tv.codely.apps.mooc.backend.command.ConsumeRabbitMqDomainEventsCommand;
 import tv.codely.apps.mooc.backend.command.FakeCommand;
 import tv.codely.shared.domain.Service;
 
@@ -22,6 +23,7 @@ public class MoocBackendApplication {
             put("fake", FakeCommand.class);
             put("another_fake", AnotherFakeCommand.class);
             put("domain-events:mysql:consume", ConsumeMySqlDomainEventsCommand.class);
+            put("domain-events:rabbitmq:consume", ConsumeRabbitMqDomainEventsCommand.class);
         }};
     }
 }

@@ -11,6 +11,14 @@ public final class StudentCreatedDomainEvent extends DomainEvent<StudentCreatedD
     private final String surname;
     private final String email;
 
+    public StudentCreatedDomainEvent() {
+        super(null);
+
+        this.name    = null;
+        this.surname = null;
+        this.email   = null;
+    }
+
     public StudentCreatedDomainEvent(String aggregateId, String name, String surname, String email) {
         super(aggregateId);
 
@@ -40,7 +48,7 @@ public final class StudentCreatedDomainEvent extends DomainEvent<StudentCreatedD
     }
 
     @Override
-    protected HashMap<String, Serializable> toPrimitives() {
+    public HashMap<String, Serializable> toPrimitives() {
         return new HashMap<String, Serializable>() {{
             put("name", name);
             put("surname", surname);
@@ -49,7 +57,7 @@ public final class StudentCreatedDomainEvent extends DomainEvent<StudentCreatedD
     }
 
     @Override
-    protected StudentCreatedDomainEvent fromPrimitives(
+    public StudentCreatedDomainEvent fromPrimitives(
         String aggregateId,
         HashMap<String, Serializable> body,
         String eventId,

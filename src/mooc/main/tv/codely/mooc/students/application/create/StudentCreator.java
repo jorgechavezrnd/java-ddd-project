@@ -14,12 +14,7 @@ public final class StudentCreator {
         this.eventBus = eventBus;
     }
 
-    public void create(CreateStudentRequest request) {
-        StudentId      id      = new StudentId(request.id());
-        StudentName    name    = new StudentName(request.name());
-        StudentSurname surname = new StudentSurname(request.surname());
-        StudentEmail   email   = new StudentEmail(request.email());
-
+    public void create(StudentId id, StudentName name, StudentSurname surname, StudentEmail email) {
         Student student = Student.create(id, name, surname, email);
 
         repository.save(student);

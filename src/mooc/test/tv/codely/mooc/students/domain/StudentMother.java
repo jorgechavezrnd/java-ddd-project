@@ -1,13 +1,13 @@
 package tv.codely.mooc.students.domain;
 
-import tv.codely.mooc.students.application.create.CreateStudentRequest;
+import tv.codely.mooc.students.application.create.CreateStudentCommand;
 
 public final class StudentMother {
     public static Student create(StudentId id, StudentName name, StudentSurname surname, StudentEmail email) {
         return new Student(id, name, surname, email);
     }
 
-    public static Student fromRequest(CreateStudentRequest request) {
+    public static Student fromCommand(CreateStudentCommand request) {
         return create(
             StudentIdMother.create(request.id()),
             StudentNameMother.create(request.name()),

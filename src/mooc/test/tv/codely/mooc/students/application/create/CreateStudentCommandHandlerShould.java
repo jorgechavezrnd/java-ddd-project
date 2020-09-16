@@ -8,24 +8,24 @@ import tv.codely.mooc.students.domain.StudentCreatedDomainEvent;
 import tv.codely.mooc.students.domain.StudentCreatedDomainEventMother;
 import tv.codely.mooc.students.domain.StudentMother;
 
-final class StudentCreatorShould extends StudentsModuleUnitTestCase {
-    private StudentCreator creator;
+final class CreateStudentCommandHandlerShould extends StudentsModuleUnitTestCase {
+    private CreateStudentCommandHandler handler;
 
     @BeforeEach
     protected void setUp() {
         super.setUp();
 
-        creator = new StudentCreator(repository, eventBus);
+        handler = new CreateStudentCommandHandler(new StudentCreator(repository, eventBus));
     }
 
     @Test
     void create_a_valid_student() {
-        CreateStudentRequest request = CreateStudentRequestMother.random();
+        CreateStudentCommand command = CreateStudentCommandMother.random();
 
-        Student                   student     = StudentMother.fromRequest(request);
+        Student                   student     = StudentMother.fromCommand(command);
         StudentCreatedDomainEvent domainEvent = StudentCreatedDomainEventMother.fromStudent(student);
 
-        creator.create(request);
+        handler.handle(command);
 
         shouldHaveSaved(student);
         shouldHavePublished(domainEvent);

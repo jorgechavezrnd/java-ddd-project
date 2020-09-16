@@ -6,22 +6,24 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import tv.codely.mooc.students.application.create.CreateStudentRequest;
-import tv.codely.mooc.students.application.create.StudentCreator;
+import tv.codely.mooc.students.application.create.CreateStudentCommand;
+import tv.codely.shared.domain.bus.command.CommandBus;
+import tv.codely.shared.domain.bus.command.CommandHandlerExecutionError;
 
 @RestController
 public final class StudentsPutController {
-    private final StudentCreator creator;
+    private final CommandBus bus;
 
-    public StudentsPutController(StudentCreator creator) {
-        this.creator = creator;
+    public StudentsPutController(CommandBus bus) {
+        this.bus = bus;
     }
 
     @PutMapping("/students/{id}")
-    public ResponseEntity<String> create(@PathVariable String id, @RequestBody Request request) {
-        creator.create(
-            new CreateStudentRequest(id, request.name(), request.surname(), request.email())
-        );
+    public ResponseEntity<String> index(
+        @PathVariable String id,
+        @RequestBody Request request
+    ) throws CommandHandlerExecutionError {
+        bus.dispatch(new CreateStudentCommand(id, request.name(), request.surname(), request.email()));
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

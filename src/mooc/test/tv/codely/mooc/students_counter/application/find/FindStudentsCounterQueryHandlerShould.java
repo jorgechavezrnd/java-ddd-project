@@ -10,30 +10,33 @@ import tv.codely.mooc.students_counter.domain.StudentsCounterNotInitialized;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-final class StudentsCounterFinderShould extends StudentsCounterModuleUnitTestCase {
-    StudentsCounterFinder finder;
+final class FindStudentsCounterQueryHandlerShould extends StudentsCounterModuleUnitTestCase {
+    FindStudentsCounterQueryHandler handler;
 
     @BeforeEach
     protected void setUp() {
         super.setUp();
 
-        finder = new StudentsCounterFinder(repository);
+        handler = new FindStudentsCounterQueryHandler(new StudentsCounterFinder(repository));
     }
 
     @Test
     void find_an_existing_students_counter() {
-        StudentsCounter         counter  = StudentsCounterMother.random();
-        StudentsCounterResponse response = StudentsCounterResponseMother.create(counter.total().value());
+        StudentsCounter          counter  = StudentsCounterMother.random();
+        FindStudentsCounterQuery query = new FindStudentsCounterQuery();
+        StudentsCounterResponse  response = StudentsCounterResponseMother.create(counter.total().value());
 
         shouldSearch(counter);
 
-        assertEquals(response, finder.find());
+        assertEquals(response, handler.handle(query));
     }
 
     @Test
     void throw_an_exception_when_students_counter_does_not_exists() {
+        FindStudentsCounterQuery query = new FindStudentsCounterQuery();
+
         shouldSearch();
 
-        assertThrows(StudentsCounterNotInitialized.class, () -> finder.find());
+        assertThrows(StudentsCounterNotInitialized.class, () -> handler.handle(query));
     }
 }

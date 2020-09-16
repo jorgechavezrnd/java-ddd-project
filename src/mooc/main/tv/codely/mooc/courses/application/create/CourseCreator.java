@@ -14,11 +14,7 @@ public final class CourseCreator {
         this.eventBus   = eventBus;
     }
 
-    public void create(CreateCourseRequest request) {
-        CourseId       id = new CourseId(request.id());
-        CourseName     name = new CourseName(request.name());
-        CourseDuration duration = new CourseDuration(request.duration());
-
+    public void create(CourseId id, CourseName name, CourseDuration duration) {
         Course course = Course.create(id, name, duration);
 
         repository.save(course);

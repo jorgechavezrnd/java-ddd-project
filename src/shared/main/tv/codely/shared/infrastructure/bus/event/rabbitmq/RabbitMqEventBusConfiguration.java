@@ -1,6 +1,7 @@
 package tv.codely.shared.infrastructure.bus.event.rabbitmq;
 
 import org.springframework.amqp.core.*;
+import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import tv.codely.shared.infrastructure.bus.event.DomainEventSubscribersInformation;
@@ -25,6 +26,18 @@ public class RabbitMqEventBusConfiguration {
         this.domainEventSubscribersInformation = domainEventSubscribersInformation;
         this.domainEventsInformation           = domainEventsInformation;
         this.exchangeName                      = "domain_events";
+    }
+
+    @Bean
+    public CachingConnectionFactory connection() {
+        CachingConnectionFactory factory = new CachingConnectionFactory();
+
+        factory.setHost("127.0.0.1");
+        factory.setPort(5672);
+        factory.setUsername("guest");
+        factory.setPassword("guest");
+
+        return factory;
     }
 
     @Bean

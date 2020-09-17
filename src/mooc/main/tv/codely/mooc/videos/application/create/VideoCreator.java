@@ -20,6 +20,7 @@ public final class VideoCreator {
         Video video = Video.create(id, type, title, url, courseId);
 
         repository.save(video);
+
         eventBus.publish(video.pullDomainEvents());
     }
 }

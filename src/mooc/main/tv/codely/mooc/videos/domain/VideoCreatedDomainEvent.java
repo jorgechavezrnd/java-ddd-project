@@ -53,6 +53,10 @@ public final class VideoCreatedDomainEvent extends DomainEvent<VideoCreatedDomai
         this.courseId = courseId;
     }
 
+    public String courseId() {
+        return courseId;
+    }
+
     @Override
     public String eventName() {
         return "video.created";

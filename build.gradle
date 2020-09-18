@@ -105,7 +105,7 @@ buildscript {
 sourceSets {
   main {
     java { srcDirs = ['apps/main'] }
-    resources { srcDirs = ['apps/main/resources'] }
+    resources { srcDirs = ['apps/main/resources', 'apps/main/tv/codely/apps/backoffice/frontend/resources'] }
   }
 
   test {
@@ -125,6 +125,8 @@ mainClassName = 'tv.codely.apps.Starter'
 
 dependencies {
   implementation('org.springframework.boot:spring-boot-starter-web:2.1.16.RELEASE')
+  implementation 'org.springframework:spring-context-support:5.2.9.RELEASE'
+  implementation 'org.freemarker:freemarker-gae:2.3.30'
 
   implementation project(":shared")
   implementation project(":backoffice")

@@ -12,4 +12,6 @@
             </p>
         </div>
     </div>
+
+    <#include "partials/new_course_form.ftl">
 </#macro>

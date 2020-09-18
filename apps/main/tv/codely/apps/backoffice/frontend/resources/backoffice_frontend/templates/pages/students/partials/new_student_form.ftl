@@ -51,7 +51,7 @@
             </label>
             <input class="<#if errors['email']?? >border border-red-500</#if> appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                    id="grid-email" type="email" name="email" placeholder="rafa@gmail.com"
-                   value="${(inputs['duration'])!""}">
+                   value="${(inputs['email'])!""}">
 
             <#if errors['email']?? >
                 <#list errors['email'] as errorMessage>

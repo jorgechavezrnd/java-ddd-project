@@ -15,6 +15,7 @@ allprojects {
     // Prod
     implementation 'org.apache.logging.log4j:log4j-core:2.12.1'
     implementation 'com.vlkan.log4j2:log4j2-logstash-layout:0.19'
+    implementation 'io.github.cdimascio:java-dotenv:5.1.4'
 
     implementation 'org.hibernate:hibernate-core:5.4.10.Final'
     implementation 'org.springframework:spring-orm:5.1.17.RELEASE'

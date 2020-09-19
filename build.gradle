@@ -136,4 +136,3 @@ dependencies {
   testImplementation 'org.springframework.boot:spring-boot-starter-test:2.1.16.RELEASE'
   testImplementation project(":shared").sourceSets.test.output
 }
-

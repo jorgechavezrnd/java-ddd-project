@@ -2,7 +2,7 @@ package tv.codely.shared.infrastructure.bus.event.mysql;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.query.NativeQuery;
-import tv.codely.shared.domain.Service;
+import org.springframework.beans.factory.annotation.Qualifier;
 import tv.codely.shared.domain.Utils;
 import tv.codely.shared.domain.bus.event.DomainEvent;
 import tv.codely.shared.infrastructure.bus.event.DomainEventsInformation;
@@ -16,7 +16,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-@Service
 public class MySqlDomainEventsConsumer {
     private final SessionFactory            sessionFactory;
     private final DomainEventsInformation   domainEventsInformation;
@@ -25,7 +24,7 @@ public class MySqlDomainEventsConsumer {
     private       Boolean                   shouldStop = false;
 
     public MySqlDomainEventsConsumer(
-        SessionFactory sessionFactory,
+        @Qualifier("mooc-session_factory") SessionFactory sessionFactory,
         DomainEventsInformation domainEventsInformation,
         SpringApplicationEventBus bus
     ) {

@@ -76,6 +76,7 @@ public class Starter {
         HashMap<String, HashMap<String, Class<?>>> commands = new HashMap<>();
 
         commands.put("mooc_backend", MoocBackendApplication.commands());
+        commands.put("backoffice_frontend", BackofficeFrontendApplication.commands());
 
         return commands;
     }

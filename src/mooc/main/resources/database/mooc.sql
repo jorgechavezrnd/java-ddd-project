@@ -41,3 +41,21 @@ CREATE TABLE IF NOT EXISTS `domain_events` (
     `occurred_on` TIMESTAMP NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `videos` (
+    `id` CHAR(36) NOT NULL,
+    `type` VARCHAR(255) NOT NULL,
+    `title` VARCHAR(255) NOT NULL,
+    `url` VARCHAR(255) NOT NULL,
+    `course_id` CHAR(36) NOT NULL,
+    PRIMARY KEY (`id`),
+    CONSTRAINT `fk_videos__course_id` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `videos_counter` (
+    `id` CHAR(36) NOT NULL,
+    `total` INT NOT NULL,
+    `existing_videos` JSON NOT NULL,
+    PRIMARY KEY (`id`),
+    CONSTRAINT `fk_videos_counter__course_id` FOREIGN KEY (`id`) REFERENCES `courses` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

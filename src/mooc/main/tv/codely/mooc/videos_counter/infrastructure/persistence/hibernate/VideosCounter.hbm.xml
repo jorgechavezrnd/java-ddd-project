@@ -1,0 +1,22 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="tv.codely.mooc.videos_counter.domain.VideosCounter" table="videos_counter">
+        <composite-id name="id" class="tv.codely.mooc.videos_counter.domain.VideosCounterId" access="field">
+            <key-property column="id" name="value" length="36" access="field" />
+        </composite-id>
+
+        <component name="total" class="tv.codely.mooc.videos_counter.domain.VideosCounterTotal" access="field">
+            <property name="value" column="total" type="integer" access="field" />
+        </component>
+
+        <property name="existingVideos" column="existing_videos" access="field">
+            <type name="json_string">
+                <param name="list_of">tv.codely.mooc.videos.domain.VideoId</param>
+            </type>
+        </property>
+    </class>
+</hibernate-mapping>

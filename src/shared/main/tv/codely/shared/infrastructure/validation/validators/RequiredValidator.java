@@ -11,6 +11,6 @@ public final class RequiredValidator implements FieldValidator {
 
     @Override
     public String errorMessage(String fieldName) {
-        return String.format("The field <%s> is required", fieldName);
+        return String.format("The field '%s' is required", fieldName);
     }
 }

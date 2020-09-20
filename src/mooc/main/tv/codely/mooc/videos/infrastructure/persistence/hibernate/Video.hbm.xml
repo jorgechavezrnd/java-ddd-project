@@ -1,0 +1,28 @@
+<?xml version = "1.0" encoding = "utf-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="tv.codely.mooc.videos.domain.Video" table="videos">
+        <composite-id name="id" class="tv.codely.mooc.videos.domain.VideoId" access="field">
+            <key-property column="id" name="value" length="36" access="field" />
+        </composite-id>
+
+        <component name="type" class="tv.codely.mooc.videos.domain.VideoType" access="field">
+            <property name="value" column="type" type="string" access="field" />
+        </component>
+
+        <component name="title" class="tv.codely.mooc.videos.domain.VideoTitle" access="field">
+            <property name="value" column="title" type="string" access="field" />
+        </component>
+
+        <component name="url" class="tv.codely.shared.domain.VideoUrl" access="field">
+            <property name="value" column="url" type="string" access="field" />
+        </component>
+
+        <component name="courseId" class="tv.codely.mooc.courses.domain.CourseId" access="field">
+            <property name="value" column="course_id" type="string" access="field" />
+        </component>
+    </class>
+</hibernate-mapping>

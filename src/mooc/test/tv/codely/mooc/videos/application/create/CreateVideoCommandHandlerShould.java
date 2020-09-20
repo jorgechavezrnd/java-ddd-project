@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import tv.codely.mooc.videos.VideosModuleUnitTestCase;
 import tv.codely.mooc.videos.domain.Video;
-import tv.codely.mooc.videos.domain.VideoCreatedDomainEvent;
+import tv.codely.shared.domain.video.VideoCreatedDomainEvent;
 import tv.codely.mooc.videos.domain.VideoCreatedDomainEventMother;
 import tv.codely.mooc.videos.domain.VideoMother;
 

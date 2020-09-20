@@ -4,6 +4,7 @@ import tv.codely.mooc.courses.domain.CourseId;
 import tv.codely.mooc.courses.domain.CourseIdMother;
 import tv.codely.shared.domain.VideoUrl;
 import tv.codely.shared.domain.VideoUrlMother;
+import tv.codely.shared.domain.video.VideoCreatedDomainEvent;
 
 public final class VideoCreatedDomainEventMother {
     public static VideoCreatedDomainEvent create(VideoId id, VideoType type, VideoTitle title, VideoUrl url, CourseId courseId) {

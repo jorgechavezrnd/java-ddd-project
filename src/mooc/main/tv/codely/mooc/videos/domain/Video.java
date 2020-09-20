@@ -3,6 +3,7 @@ package tv.codely.mooc.videos.domain;
 import tv.codely.mooc.courses.domain.CourseId;
 import tv.codely.shared.domain.AggregateRoot;
 import tv.codely.shared.domain.VideoUrl;
+import tv.codely.shared.domain.video.VideoCreatedDomainEvent;
 
 import java.util.Objects;
 

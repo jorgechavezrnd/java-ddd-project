@@ -1,7 +1,7 @@
 package tv.codely.mooc.videos_counter.application.increment;
 
 import org.springframework.context.event.EventListener;
-import tv.codely.mooc.videos.domain.VideoCreatedDomainEvent;
+import tv.codely.shared.domain.video.VideoCreatedDomainEvent;
 import tv.codely.mooc.videos.domain.VideoId;
 import tv.codely.mooc.videos_counter.domain.VideosCounterId;
 import tv.codely.shared.domain.Service;

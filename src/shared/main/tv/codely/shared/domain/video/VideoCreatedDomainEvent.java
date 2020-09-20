@@ -1,4 +1,4 @@
-package tv.codely.mooc.videos.domain;
+package tv.codely.shared.domain.video;
 
 import tv.codely.shared.domain.bus.event.DomainEvent;
 
@@ -53,10 +53,6 @@ public final class VideoCreatedDomainEvent extends DomainEvent<VideoCreatedDomai
         this.courseId = courseId;
     }
 
-    public String courseId() {
-        return courseId;
-    }
-
     @Override
     public String eventName() {
         return "video.created";
@@ -88,6 +84,22 @@ public final class VideoCreatedDomainEvent extends DomainEvent<VideoCreatedDomai
             (String) body.get("url"),
             (String) body.get("courseId")
         );
+    }
+
+    public String type() {
+        return type;
+    }
+
+    public String title() {
+        return title;
+    }
+
+    public String url() {
+        return url;
+    }
+
+    public String courseId() {
+        return courseId;
     }
 
     @Override

@@ -2,7 +2,7 @@ package tv.codely.apps.mooc.backend.controller.videos_counter;
 
 import org.junit.jupiter.api.Test;
 import tv.codely.apps.mooc.backend.controller.ApplicationTestCase;
-import tv.codely.mooc.videos.domain.VideoCreatedDomainEvent;
+import tv.codely.shared.domain.video.VideoCreatedDomainEvent;
 
 public final class VideosCounterGetControllerShould extends ApplicationTestCase {
     @Test

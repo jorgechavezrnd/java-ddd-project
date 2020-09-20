@@ -68,6 +68,9 @@
                 <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="grid-course-id" name="courseId">
                     <#if course_ids?? >
+                        <#if course_ids?size == 0 >
+                            <option>Not course registered</option>
+                        </#if>
                         <#list course_ids as courseIdValue>
                             <option <#if inputs['courseId']?? && inputs['courseId'] == courseIdValue >selected</#if>
                                     value="${courseIdValue}">

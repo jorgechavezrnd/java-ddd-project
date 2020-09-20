@@ -18,7 +18,7 @@ public class Starter {
 
         String applicationName = args[0];
         String commandName     = args[1];
-        boolean isApiCommand   = commandName.equals("api");
+        boolean isServerCommand   = commandName.equals("server");
 
         ensureApplicationExist(applicationName);
         ensureCommandExist(applicationName, commandName);
@@ -27,13 +27,13 @@ public class Starter {
 
         SpringApplication app = new SpringApplication(applicationClass);
 
-        if (!isApiCommand) {
+        if (!isServerCommand) {
             app.setWebApplicationType(WebApplicationType.NONE);
         }
 
         ConfigurableApplicationContext context = app.run(args);
 
-        if (!isApiCommand) {
+        if (!isServerCommand) {
             ConsoleCommand command = (ConsoleCommand) context.getBean(
                 commands().get(applicationName).get(commandName)
             );
@@ -53,9 +53,9 @@ public class Starter {
     }
 
     private static void ensureCommandExist(String applicationName, String commandName) {
-        if (!"api".equals(commandName) && !existCommand(applicationName, commandName)) {
+        if (!"server".equals(commandName) && !existCommand(applicationName, commandName)) {
             throw new RuntimeException(String.format(
-                "The command <%s> for application <%s> doesn't exist. Valids (application.command):\n- api\n- %s",
+                "The command <%s> for application <%s> doesn't exist. Valids (application.command):\n- server\n- %s",
                 commandName,
                 applicationName,
                 String.join("\n- ", commands().get(applicationName).keySet())

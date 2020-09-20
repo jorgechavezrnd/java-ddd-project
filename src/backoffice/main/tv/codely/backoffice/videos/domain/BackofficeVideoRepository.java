@@ -1,5 +1,7 @@
 package tv.codely.backoffice.videos.domain;
 
+import tv.codely.shared.domain.criteria.Criteria;
+
 import java.util.List;
 
 public interface BackofficeVideoRepository {
@@ -7,5 +9,5 @@ public interface BackofficeVideoRepository {
 
     List<BackofficeVideo> searchAll();
 
-    List<BackofficeVideo> searchByCourseId(String courseId);
+    List<BackofficeVideo> matching(Criteria criteria);
 }

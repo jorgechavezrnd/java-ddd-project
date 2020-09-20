@@ -6,11 +6,9 @@ import org.springframework.transaction.annotation.Transactional;
 import tv.codely.backoffice.videos.domain.BackofficeVideo;
 import tv.codely.backoffice.videos.domain.BackofficeVideoRepository;
 import tv.codely.shared.domain.Service;
+import tv.codely.shared.domain.criteria.Criteria;
 import tv.codely.shared.infrastructure.hibernate.HibernateRepository;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import java.util.List;
 
 @Service
@@ -25,17 +23,13 @@ public class MySqlBackofficeVideoRepository extends HibernateRepository<Backoffi
         persist(video);
     }
 
+    @Override
     public List<BackofficeVideo> searchAll() {
         return all();
     }
 
     @Override
-    public List<BackofficeVideo> searchByCourseId(String courseId) {
-        CriteriaBuilder builder = sessionFactory.getCriteriaBuilder();
-        CriteriaQuery<BackofficeVideo> criteria = builder.createQuery(aggregateClass);
-        Root<BackofficeVideo> root = criteria.from(aggregateClass);
-        criteria.select(root).where(builder.equal(root.get("courseId"), courseId));
-
-        return sessionFactory.getCurrentSession().createQuery(criteria).getResultList();
+    public List<BackofficeVideo> matching(Criteria criteria) {
+        return byCriteria(criteria);
     }
 }

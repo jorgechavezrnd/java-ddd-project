@@ -1,7 +1,7 @@
 <h3 class="font-sans text-gray-800 text-center text-3xl mb-10">Cursos existentes</h3>
 
 
-<form action="" method="get" id="courses-filter" name="filter-courses">
+<form action="" method="get" id="courses-filters" name="filter-courses">
     <div id="filter-rows">
 
     </div>

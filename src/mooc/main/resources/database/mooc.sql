@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `domain_events` (
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE `videos` (
+CREATE TABLE IF NOT EXISTS `videos` (
     `id` CHAR(36) NOT NULL,
     `type` VARCHAR(255) NOT NULL,
     `title` VARCHAR(255) NOT NULL,
@@ -52,7 +52,7 @@ CREATE TABLE `videos` (
     CONSTRAINT `fk_videos__course_id` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE `videos_counter` (
+CREATE TABLE IF NOT EXISTS `videos_counter` (
     `id` CHAR(36) NOT NULL,
     `total` INT NOT NULL,
     `existing_videos` JSON NOT NULL,

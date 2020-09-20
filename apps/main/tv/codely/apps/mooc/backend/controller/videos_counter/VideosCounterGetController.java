@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import tv.codely.mooc.videos_counter.application.find.FindVideosCounterQuery;
-import tv.codely.mooc.videos_counter.application.find.VideosCounterResponse;
+import tv.codely.mooc.videos_counter.application.VideosCounterResponse;
 import tv.codely.shared.domain.bus.query.QueryBus;
 import tv.codely.shared.domain.bus.query.QueryHandlerExecutionError;
 

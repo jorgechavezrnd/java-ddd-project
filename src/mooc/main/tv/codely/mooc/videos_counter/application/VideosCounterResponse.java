@@ -1,4 +1,4 @@
-package tv.codely.mooc.videos_counter.application.find;
+package tv.codely.mooc.videos_counter.application;
 
 import tv.codely.shared.domain.bus.query.Response;
 

@@ -1,5 +1,6 @@
 package tv.codely.mooc.videos_counter.application.find;
 
+import tv.codely.mooc.videos_counter.application.VideosCounterResponse;
 import tv.codely.mooc.videos_counter.domain.VideosCounter;
 import tv.codely.mooc.videos_counter.domain.VideosCounterId;
 import tv.codely.mooc.videos_counter.domain.VideosCounterNotInitialized;

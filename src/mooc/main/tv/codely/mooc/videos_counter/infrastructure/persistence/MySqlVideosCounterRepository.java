@@ -28,6 +28,11 @@ public class MySqlVideosCounterRepository extends HibernateRepository<VideosCoun
     }
 
     @Override
+    public Optional<List<VideosCounter>> searchAll() {
+        return Optional.ofNullable(all());
+    }
+
+    @Override
     public Optional<VideosCounter> search(VideosCounterId id) {
         CriteriaBuilder builder = sessionFactory.getCriteriaBuilder();
         CriteriaQuery<VideosCounter> criteria = builder.createQuery(aggregateClass);

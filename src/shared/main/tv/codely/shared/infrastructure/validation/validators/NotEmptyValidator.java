@@ -11,6 +11,6 @@ public final class NotEmptyValidator implements FieldValidator {
 
     @Override
     public String errorMessage(String fieldName) {
-        return String.format("The field <%s> should not be empty", fieldName);
+        return String.format("The field '%s' should not be empty", fieldName);
     }
 }

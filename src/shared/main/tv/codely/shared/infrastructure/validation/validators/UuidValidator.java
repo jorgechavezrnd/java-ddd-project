@@ -14,6 +14,6 @@ public final class UuidValidator implements FieldValidator {
 
     @Override
     public String errorMessage(String fieldName) {
-        return String.format("The field <%s> is not a valid uuid", fieldName);
+        return String.format("The field '%s' is not a valid uuid", fieldName);
     }
 }

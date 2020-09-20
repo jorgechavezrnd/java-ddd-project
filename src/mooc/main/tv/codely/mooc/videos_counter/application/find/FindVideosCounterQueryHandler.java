@@ -1,5 +1,6 @@
 package tv.codely.mooc.videos_counter.application.find;
 
+import tv.codely.mooc.videos_counter.application.VideosCounterResponse;
 import tv.codely.shared.domain.Service;
 import tv.codely.shared.domain.bus.query.QueryHandler;
 

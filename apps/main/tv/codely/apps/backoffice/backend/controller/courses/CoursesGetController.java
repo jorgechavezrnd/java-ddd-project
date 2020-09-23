@@ -40,6 +40,7 @@ public final class CoursesGetController {
         );
 
         return ResponseEntity.ok()
+                             .eTag("MD5 o clave")
                              .cacheControl(CacheControl.maxAge(10, TimeUnit.DAYS))
                              .body(
                                  courses.courses().stream().map(response -> new HashMap<String, String>() {{

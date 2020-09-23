@@ -1,5 +1,7 @@
 package tv.codely.apps.backoffice.backend.controller.courses;
 
+import org.springframework.http.CacheControl;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tv.codely.backoffice.courses.application.BackofficeCoursesResponse;
 import tv.codely.backoffice.courses.application.search_by_criteria.SearchBackofficeCoursesByCriteriaQuery;
@@ -11,6 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 @RestController
@@ -23,7 +26,9 @@ public final class CoursesGetController {
     }
 
     @GetMapping("/courses")
-    public List<HashMap<String, String>> index(@RequestParam HashMap<String, Serializable> params) throws QueryHandlerExecutionError {
+    public ResponseEntity<?> index(
+        @RequestParam HashMap<String, Serializable> params
+    ) throws QueryHandlerExecutionError {
         BackofficeCoursesResponse courses = bus.ask(
             new SearchBackofficeCoursesByCriteriaQuery(
                 parseFilters(params),
@@ -34,11 +39,15 @@ public final class CoursesGetController {
             )
         );
 
-        return courses.courses().stream().map(response -> new HashMap<String, String>() {{
-            put("id", response.id());
-            put("name", response.name());
-            put("duration", response.duration());
-        }}).collect(Collectors.toList());
+        return ResponseEntity.ok()
+                             .cacheControl(CacheControl.maxAge(10, TimeUnit.DAYS))
+                             .body(
+                                 courses.courses().stream().map(response -> new HashMap<String, String>() {{
+                                     put("id", response.id());
+                                     put("name", response.name());
+                                     put("duration", response.duration());
+                                }}).collect(Collectors.toList())
+                             );
     }
 
     private List<HashMap<String, String>> parseFilters(HashMap<String, Serializable> params) {

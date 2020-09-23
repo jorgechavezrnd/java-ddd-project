@@ -4,6 +4,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
+import tv.codely.apps.backoffice.frontend.command.MigrateCoursesFromMySqlToElasticsearchCommand;
 import tv.codely.shared.domain.Service;
 
 import java.util.HashMap;
@@ -15,6 +16,8 @@ import java.util.HashMap;
 )
 public class BackofficeFrontendApplication {
     public static HashMap<String, Class<?>> commands() {
-        return new HashMap<>();
+        return new HashMap<String, Class<?>>() {{
+            put("migrate_courses_from_mysql_to_elasticsearch", MigrateCoursesFromMySqlToElasticsearchCommand.class);
+        }};
     }
 }

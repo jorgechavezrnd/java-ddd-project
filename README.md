@@ -67,3 +67,6 @@ For run rabbitmq container:
 - `docker run -d -p 15672:15672 -p 5672:5672 --name rabbitmq_server rabbitmq:3-management`
 - Go to [localhost:15672](http://localhost:15672)
 - Default login is `guest` `guest`
+
+For run elasticsearch container:
+- `docker run -d -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" --name elasticsearch_server elasticsearch:6.8.4`

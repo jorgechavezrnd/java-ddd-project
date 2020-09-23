@@ -15,6 +15,13 @@ public final class Criteria {
         this.offset  = offset;
     }
 
+    public Criteria(Filters filters, Order order) {
+        this.filters = filters;
+        this.order   = order;
+        this.limit   = Optional.empty();
+        this.offset  = Optional.empty();
+    }
+
     public Filters filters() {
         return filters;
     }
@@ -29,5 +36,19 @@ public final class Criteria {
 
     public Optional<Integer> offset() {
         return offset;
+    }
+
+    public boolean hasFilters() {
+        return filters.filters().size() > 0;
+    }
+
+    public String serialize() {
+        return String.format(
+            "%s~~%s~~%s~~%s",
+            filters.serialize(),
+            order.serialize(),
+            offset.orElse(0),
+            limit.orElse(0)
+        );
     }
 }

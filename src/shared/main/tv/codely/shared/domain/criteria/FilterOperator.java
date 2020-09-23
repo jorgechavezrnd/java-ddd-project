@@ -25,4 +25,12 @@ public enum FilterOperator {
             default: return null;
         }
     }
+
+    public boolean isPositive() {
+        return this != NOT_EQUAL && this != NOT_CONTAINS;
+    }
+
+    public String value() {
+        return operator;
+    }
 }

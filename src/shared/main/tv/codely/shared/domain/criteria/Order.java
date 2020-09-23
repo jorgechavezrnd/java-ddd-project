@@ -20,6 +20,14 @@ public final class Order {
         return new Order(new OrderBy(""), OrderType.NONE);
     }
 
+    public static Order desc(String orderBy) {
+        return new Order(new OrderBy(orderBy), OrderType.DESC);
+    }
+
+    public static Order asc(String orderBy) {
+        return new Order(new OrderBy(orderBy), OrderType.ASC);
+    }
+
     public OrderBy orderBy() {
         return orderBy;
     }
@@ -30,5 +38,9 @@ public final class Order {
 
     public boolean hasOrder() {
         return !orderType.isNone();
+    }
+
+    public String serialize() {
+        return String.format("%s.%s", orderBy.value(), orderType.value());
     }
 }

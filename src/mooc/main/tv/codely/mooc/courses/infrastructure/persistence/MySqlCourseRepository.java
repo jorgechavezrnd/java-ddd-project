@@ -2,6 +2,7 @@ package tv.codely.mooc.courses.infrastructure.persistence;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.transaction.annotation.Transactional;
 import tv.codely.mooc.courses.domain.Course;
 import tv.codely.mooc.courses.domain.CourseId;
@@ -11,6 +12,7 @@ import tv.codely.shared.infrastructure.hibernate.HibernateRepository;
 
 import java.util.Optional;
 
+@Primary
 @Service
 @Transactional("mooc-transaction_manager")
 public class MySqlCourseRepository extends HibernateRepository<Course> implements CourseRepository {

@@ -7,6 +7,10 @@ public final class CourseMother {
         return new Course(id, name, duration);
     }
 
+    public static Course create(CourseName name, CourseDuration duration) {
+        return create(CourseIdMother.random(), name, duration);
+    }
+
     public static Course fromCommand(CreateCourseCommand command) {
         return create(
             CourseIdMother.create(command.id()),

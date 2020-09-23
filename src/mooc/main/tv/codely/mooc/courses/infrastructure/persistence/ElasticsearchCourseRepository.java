@@ -12,6 +12,7 @@ import tv.codely.shared.infrastructure.elasticsearch.ElasticsearchClient;
 import tv.codely.shared.infrastructure.elasticsearch.ElasticsearchRepository;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -31,6 +32,10 @@ public final class ElasticsearchCourseRepository extends ElasticsearchRepository
         Criteria criteria = new Criteria(new Filters(Collections.singletonList(idFilter)), Order.asc("id"));
 
         return searchByCriteria(criteria, Course::fromPrimitives).stream().findFirst();
+    }
+
+    public List<Course> matching(Criteria criteria) {
+        return searchByCriteria(criteria, Course::fromPrimitives);
     }
 
     @Override

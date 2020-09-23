@@ -11,7 +11,6 @@ import tv.codely.shared.domain.criteria.Order;
 import tv.codely.shared.infrastructure.elasticsearch.ElasticsearchClient;
 import tv.codely.shared.infrastructure.elasticsearch.ElasticsearchRepository;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Optional;
 

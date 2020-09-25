@@ -8,6 +8,3 @@ project(':backoffice').projectDir = new File('src/backoffice')
 
 include ':mooc'
 project(':mooc').projectDir = new File('src/mooc')
-
-include ':retention'
-project(':retention').projectDir = new File('src/retention')

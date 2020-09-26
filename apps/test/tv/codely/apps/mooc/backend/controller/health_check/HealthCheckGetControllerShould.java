@@ -1,7 +1,7 @@
 package tv.codely.apps.mooc.backend.controller.health_check;
 
 import org.junit.jupiter.api.Test;
-import tv.codely.apps.mooc.backend.controller.ApplicationTestCase;
+import tv.codely.apps.ApplicationTestCase;
 
 final class HealthCheckGetControllerShould extends ApplicationTestCase {
     @Test

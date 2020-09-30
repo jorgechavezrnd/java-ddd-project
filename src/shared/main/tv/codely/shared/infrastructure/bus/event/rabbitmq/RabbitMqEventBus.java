@@ -20,11 +20,11 @@ public class RabbitMqEventBus implements EventBus {
     }
 
     @Override
-    public void publish(List<DomainEvent<?>> events) {
+    public void publish(List<DomainEvent> events) {
         events.forEach(this::publish);
     }
 
-    private void publish(DomainEvent<?> domainEvent) {
+    private void publish(DomainEvent domainEvent) {
         try {
             this.publisher.publish(domainEvent, exchangeName);
         } catch (AmqpException error) {

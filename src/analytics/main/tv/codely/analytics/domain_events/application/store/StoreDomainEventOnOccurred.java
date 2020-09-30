@@ -8,7 +8,7 @@ import tv.codely.analytics.domain_events.domain.AnalyticsDomainEventName;
 import tv.codely.shared.domain.bus.event.DomainEvent;
 import tv.codely.shared.domain.bus.event.DomainEventSubscriber;
 
-//@DomainEventSubscriber({DomainEvent.class})
+@DomainEventSubscriber({DomainEvent.class})
 public final class StoreDomainEventOnOccurred {
     private final DomainEventStorer storer;
 

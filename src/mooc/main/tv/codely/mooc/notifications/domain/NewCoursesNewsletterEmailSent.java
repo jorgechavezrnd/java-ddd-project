@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Objects;
 
-public final class NewCoursesNewsletterEmailSent extends DomainEvent<NewCoursesNewsletterEmailSent> {
+public final class NewCoursesNewsletterEmailSent extends DomainEvent {
     private final String studentId;
 
     public NewCoursesNewsletterEmailSent() {

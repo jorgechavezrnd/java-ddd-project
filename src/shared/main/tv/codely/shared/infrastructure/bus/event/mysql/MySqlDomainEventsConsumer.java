@@ -90,6 +90,6 @@ public class MySqlDomainEventsConsumer {
             Utils.dateToString(occurredOn)
         );
 
-        bus.publish(Collections.singletonList((DomainEvent<?>) domainEvent));
+        bus.publish(Collections.singletonList((DomainEvent) domainEvent));
     }
 }

@@ -29,7 +29,7 @@ public final class DomainEventsInformation {
         return indexedDomainEvents.get(name);
     }
 
-    public String forClass(Class<? extends DomainEvent<?>> domainEventClass) {
+    public String forClass(Class<? extends DomainEvent> domainEventClass) {
         return indexedDomainEvents.entrySet()
                                   .stream()
                                   .filter(entry -> Objects.equals(entry.getValue(), domainEventClass))

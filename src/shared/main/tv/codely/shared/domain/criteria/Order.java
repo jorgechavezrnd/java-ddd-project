@@ -16,7 +16,7 @@ public final class Order {
                       .orElseGet(Order::none);
     }
 
-    private static Order none() {
+    public static Order none() {
         return new Order(new OrderBy(""), OrderType.NONE);
     }
 

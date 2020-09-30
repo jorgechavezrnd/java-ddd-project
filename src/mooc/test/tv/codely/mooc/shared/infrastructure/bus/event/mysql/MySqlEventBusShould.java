@@ -15,7 +15,6 @@ import java.util.Collections;
 class MySqlEventBusShould extends MoocContextInfrastructureTestCase {
     @Autowired
     private MySqlEventBus             eventBus;
-
     @Autowired
     private MySqlDomainEventsConsumer consumer;
 

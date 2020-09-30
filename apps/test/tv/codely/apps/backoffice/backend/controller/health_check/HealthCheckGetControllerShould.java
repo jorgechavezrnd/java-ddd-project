@@ -2,9 +2,9 @@ package tv.codely.apps.backoffice.backend.controller.health_check;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpHeaders;
-import tv.codely.apps.ApplicationTestCase;
+import tv.codely.apps.backoffice.BackofficeApplicationTestCase;
 
-final class HealthCheckGetControllerShould extends ApplicationTestCase {
+final class HealthCheckGetControllerShould extends BackofficeApplicationTestCase {
     @Test
     void check_the_app_is_working_ok_with_valid_credentials() throws Exception {
         HttpHeaders headers = new HttpHeaders();

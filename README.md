@@ -50,23 +50,3 @@ Here you have the [course on CodelyTV Pro where we explain step by step all this
 * ⚡ [Scala Basic Skeleton (g8 template)](https://github.com/CodelyTV/scala-basic-skeleton.g8)
 * ⚛ [Scala Examples](https://github.com/CodelyTV/scala-examples)
 * 🥦 [Scala DDD Example](https://github.com/CodelyTV/scala-ddd-example)
-
-For run test with mysql adapter:
-- Comment '@Service' in InMemory adapter and add it to MySql adapter
-- Command for run mysql docker container: `docker run -d --name mysql_server -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql`
-
-NOTE: use JDK 8 for avoid this warning:
-- 'an illegal reflective access operation has occurred...'
-
-For run mooc_backend commands:
-- `./gradlew :run --args="mooc_backend server"`
-- `./gradlew :run --args="mooc_backend fake"`
-- `./gradlew :run --args="mooc_backend another_fake"`
-
-For run rabbitmq container:
-- `docker run -d -p 15672:15672 -p 5672:5672 --name rabbitmq_server rabbitmq:3-management`
-- Go to [localhost:15672](http://localhost:15672)
-- Default login is `guest` `guest`
-
-For run elasticsearch container:
-- `docker run -d -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" --name elasticsearch_server elasticsearch:6.8.4`
